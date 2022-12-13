@@ -13,6 +13,7 @@ const Register = () => {
           <input type="file" />
           <button>Sign Up</button>
         </form>
+        <p>Already Signed up? Login </p>
       </div>
     </div>
   )
