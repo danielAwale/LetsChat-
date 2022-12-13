@@ -13,6 +13,12 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+
+    .logo {
+      color: rgb(77, 77, 157);
+      font-weight: bold;
+      font-size: 24px;
+    }
     form{
       display: flex;
       flex-direction: column;
