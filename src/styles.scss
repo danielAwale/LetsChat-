@@ -38,6 +38,22 @@
           color: rgb(175, 175, 175);
         }
       }
+
+      button{
+        background-color: #6380e0;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+    }
+
+    p{
+      color: #5d5b8d;
+      font-size: 12px;
+      margin-top: 10px;
     }
   }
 }
