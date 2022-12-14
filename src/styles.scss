@@ -203,6 +203,22 @@
         padding: 10px;
         height: calc(100% - 160px);
 
+
+        .message{
+          display:flex;
+          gap: 20px;
+
+          .messageInfo{
+            img{
+              // width: 40px;
+            }
+          }
+
+          .messageContent{
+            
+          }
+        }
+
       }
 
       .input{
