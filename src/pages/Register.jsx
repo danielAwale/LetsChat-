@@ -2,12 +2,22 @@ import React from 'react'
 import Img from '../img/addAvatar.png'
 
 const Register = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const displayName = e.target[0].value;
+    const displayEmail = e.target[1].value;
+    const displayPassword = e.target[2].value;
+    const displayFile = e.target[3].files[0];
+  }
+
+
   return (
     <div className='formContainer'>
       <div className='formWrapper'>
         <span className="logo">Letz Chat!</span>
         <span className="title">Register</span>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input type="text" placeholder='Display Name' />
           <input type="email" placeholder='Email' />
           <input type="password" placeholder='Password' />
