@@ -19,17 +19,10 @@ const Register = () => {
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password)
-  const storageRef = ref(storage, displayName);
+      const storageRef = ref(storage, displayName);
 
-  const uploadTask = uploadBytesResumable(storageRef, file);
-
-  // Register three observers:
-  uploadTask.on(
-    (error) => {
-      setErr(true)
-    }, 
-    () => {
-      getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+      await uploadBytesResumable(storageRef, file).then(() => {
+      getDownloadURL(storageRef).then(async (downloadURL) => {
         await updateProfile(res.user, {
           displayName,
           photoURL: downloadURL
@@ -41,6 +34,7 @@ const Register = () => {
           photoURL: downloadURL,
         })
       });
+      
     }
 );
 
