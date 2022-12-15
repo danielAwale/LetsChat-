@@ -27,12 +27,17 @@ const Register = () => {
           displayName,
           photoURL: downloadURL
         });
+
+        //To register a user in the users table
         await setDoc(doc(db, "users", res.user.uid), {
           uid: res.user.uid,
           displayName,
           email, 
           photoURL: downloadURL,
-        })
+        });
+
+        //To get their chats in the userChats table
+        await setDoc(doc(db, "userChats", res.user.id), {})
       });
       
     }
