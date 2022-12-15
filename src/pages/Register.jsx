@@ -1,9 +1,11 @@
 import React from 'react'
 import Img from '../img/addAvatar.png'
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, storage } from '../firebase';
+import { auth, storage, db } from '../firebase';
 import { useState } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore"; 
+
 
 const Register = () => {
   const [err, setErr] = useState(false);
@@ -30,9 +32,15 @@ const Register = () => {
           displayName,
           photoURL: downloadURL
         })
+        await setDoc(doc(db, "users", res.user.uid), {
+          displayName,
+          email, 
+          photoURL: downloadURL,
+        })
       });
     }
 );
+
     } catch {
       setErr(true);
     }
