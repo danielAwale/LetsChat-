@@ -2,9 +2,10 @@ import React from 'react'
 import Img from '../img/addAvatar.png'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
+import { useState } from 'react';
 
 const Register = () => {
-
+  const [err, setErr] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
@@ -14,6 +15,7 @@ const Register = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password)
     } catch {
+      setErr(true);
     }
     
   }
@@ -34,6 +36,7 @@ const Register = () => {
             <span>Add an Avatar</span>
           </label>
           <button>Sign Up</button>
+          {err && <span>Something went wrong</span>}
         </form>
         <p>Already Signed up? Login </p>
       </div>
