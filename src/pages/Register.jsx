@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from '../img/addAvatar.png'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage } from '../firebase';
 import { useState } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -25,8 +25,11 @@ const Register = () => {
       setErr(true)
     }, 
     () => {
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        console.log('File available at', downloadURL);
+      getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+        await updateProfile(res.user, {
+          displayName,
+          photoURL: downloadURL
+        })
       });
     }
 );
