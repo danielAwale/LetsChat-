@@ -3,10 +3,14 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import './styles.scss'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const { currentUser } = useContext(AuthContext)
+  console.log(currentUser)
   return (
-    <BrowserRouter>
+    <BrowserRouter BrowserRouter >
       <Routes>
         <Route>
           <Route path="/" index element={<Home />} />
@@ -15,7 +19,7 @@ function App() {
         </Route>
       </Routes>
 
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 

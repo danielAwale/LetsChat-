@@ -9,10 +9,14 @@ export const AuthContextProvider = ({ children }) => { //children will represent
 
 
   useEffect(() => { //this will check if we have a user or not, if we do will set current user to the user
-    onAuthStateChanged(auth, (user) => {
+    const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       console.log(user)
     })
+
+    return () => {
+      unsub()
+    }
   }, [])
 
 
