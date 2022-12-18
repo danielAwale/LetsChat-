@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import { collection, query, where } from "firebase/firestore";
+
 
 const Search = () => {
   const [username, setUsername] = useState("");
