@@ -5,7 +5,7 @@ import { auth, storage, db } from '../firebase';
 import { useState } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore"; 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const Register = () => {
@@ -72,7 +72,7 @@ const Register = () => {
           <button>Sign Up</button>
           {err && <span>Something went wrong</span>}
         </form>
-        <p>Already Signed up? Login </p>
+        <p>Already Signed up? <Link to='/login'>Login</Link> </p>
       </div>
     </div>
   )
