@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Img from '../img/addAvatar.png'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase';
 
 
 
@@ -16,7 +17,8 @@ const Login = () => {
     const password = e.target[2].value;
 
     try {
-
+      await signInWithEmailAndPassword(auth, email, password)
+      navigate("/login")
     } catch {
       setErr(true);
     }
@@ -31,8 +33,9 @@ const Login = () => {
           <input type="email" placeholder='Email' />
           <input type="password" placeholder='Password' />
           <button>Sign in</button>
+          {err && <span>Something went wrong</span>}
         </form>
-        <p>Don't have an account? Register</p>
+        <p>Don't have an account? <Link to="/register">Register</Link></p>
       </div>
     </div>
   )
