@@ -1,5 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import Img from '../img/addAvatar.png'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+
 
 const Login = () => {
   const [err, setErr] = useState(false);
@@ -23,7 +27,7 @@ const Login = () => {
       <div className='formWrapper'>
         <span className="logo">Letz Chat!</span>
         <span className="title">Login</span>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input type="email" placeholder='Email' />
           <input type="password" placeholder='Password' />
           <button>Sign in</button>
