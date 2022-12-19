@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {db} from '../firebase'
+import {AuthContext} from "../context/AuthContext "
 
 const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
+
+  const {currentUser} = useContext(AuthContext)
 
   const handleSearch = async () => {
     const q = query(collection(db, "users"), where("displayName", "==", username))
@@ -27,9 +30,11 @@ const Search = () => {
 
 
   const handleSelect = async() => {
-    //check whether the group (chats in firestore) exists, if not create a new one
-    const combinedId = 
-    const res = await getDocs(db,"chats")
+    //check whether the group (chats in firestore) exists, if not create a new one   
+    const combinedId = currentUser.uid > user.uid ?  currentUser.uid + user.uid : user.uid + currentUser.uid 
+    
+    
+    const res = await getDocs(db,"chats", combinedId)
     //create user chats 
 
 
