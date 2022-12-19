@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { collection, query, where, getDocs } from "firebase/firestore";
+import React, {useState, useContext} from 'react'
+import { collection, query, where, getDocs, setDoc, doc } from "firebase/firestore";
 import {db} from '../firebase'
 import {AuthContext} from "../context/AuthContext "
 
@@ -33,10 +33,18 @@ const Search = () => {
     //check whether the group (chats in firestore) exists, if not create a new one   
     const combinedId = currentUser.uid > user.uid ?  currentUser.uid + user.uid : user.uid + currentUser.uid 
     
-    
+    try{
     const res = await getDocs(db,"chats", combinedId)
     //create user chats 
+    if(!res.exists()) {
+      await setDoc(doc, (db, "chats", combinedId), {messages: []});
 
+      //create user chats
+      
+    }
+    } catch (err) {
+      setErr(true)
+    }
 
   }
   return (
