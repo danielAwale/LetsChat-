@@ -40,7 +40,17 @@ const Search = () => {
       await setDoc(doc, (db, "chats", combinedId), {messages: []});
 
       //create user chats
-      
+      userChats: {
+         janesId: {
+          combinedId:{
+            userInfo:{
+              
+            },
+            lastMessage:"",
+            date:
+          }
+         }
+      }
     }
     } catch (err) {
       setErr(true)
