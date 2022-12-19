@@ -24,6 +24,16 @@ const Search = () => {
   const handleKey = (e) => {
     e.code === "Enter" && handleSearch();
   }
+
+
+  const handleSelect = async() => {
+    //check whether the group (chats in firestore) exists, if not create a new one
+    const combinedId = 
+    const res = await getDocs(db,"chats")
+    //create user chats 
+
+
+  }
   return (
     <div className='search'>
       <div className="searchForm">
